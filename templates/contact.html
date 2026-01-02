@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>Контактная форма</title>
+    <style>
+        .flash-success {
+            color: green;
+            font-weight: bold;
+        }
+
+        .flash-error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Связаться с нами</h1>
+    <form method="POST">
+        <label>Имя:</label><br>
+        <input type="text" name="name" placeholder="Введите имя"><br><br>
+        <label>Email:</label><br>
+        <input type="text" name="email" placeholder="Введите email"><br><br>
+        <label>Сообщение:</label><br>
+        <textarea name="message" placeholder="Введите
+сообщение"></textarea><br><br>
+        <button type="submit">Отправить</button>
+    </form>
+    <br>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <p class="flash-{{ category }}">{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+</body>
+
+</html>
